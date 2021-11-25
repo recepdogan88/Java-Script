@@ -6,16 +6,16 @@
 */
 
 //Two numbers that the user wanted to compare were received.
-let value1 = prompt("Enter a Value", "Please enter the first number");
-let value2 = prompt("Enter a Value", "Please enter the second number");
-let value3 = prompt("Enter a Value", "Please enter the third number");
+let Enteredvalue1 = prompt("Enter a Value", "Please enter the first number");
+let Enteredvalue2 = prompt("Enter a Value", "Please enter the second number");
+let Enteredvalue3 = prompt("Enter a Value", "Please enter the third number");
 
 //These variables are assigned as numbers.
-let x = parseInt(value1);
-let y = parseInt(value2);
-let z = parseInt(value3);
+let x = parseInt(Enteredvalue1);
+let y = parseInt(Enteredvalue2);
+let z = parseInt(Enteredvalue3);
 
-//Sort from smallest to largest
+//Sort from largest to smallest
 if (x > y && y > z) {
   alert(x + ">" + y + ">" + z);
   console.log(x + ">" + y + ">" + z);
@@ -57,6 +57,8 @@ else if (x == y && x < z) {
 } else if (x == y && y == z) {
   alert(x + "=" + y + "=" + z);
   console.log(x + "=" + y + "=" + z);
+
+  //Warn if user has not entered a number
 } else {
-  alert("Please enter numbers");
+  alert("Please enter number");
 }
