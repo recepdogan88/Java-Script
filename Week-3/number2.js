@@ -1,5 +1,5 @@
 /*
-1-Take the two numbers that the user wants to compare.
+1-Take the three numbers that the user wants to compare.
 2-Assign these variables as numbers.
 3-Create conditions to sort from largest to smallest.
 4-Write the terms of equality.
