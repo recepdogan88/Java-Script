@@ -18,33 +18,45 @@ let z = parseInt(value3);
 //Sort from smallest to largest
 if (x > y && y > z) {
   alert(x + ">" + y + ">" + z);
+  console.log(x + ">" + y + ">" + z);
 } else if (z > x && x > y) {
   alert(z + ">" + x + ">" + y);
+  console.log(z + ">" + x + ">" + y);
 } else if (y > z && z > x) {
   alert(y + ">" + z + ">" + x);
+  console.log(y + ">" + z + ">" + x);
 } else if (y > x && x > z) {
   alert(y + ">" + x + ">" + z);
+  console.log(y + ">" + x + ">" + z);
 } else if (x > z && z > y) {
   alert(x + ">" + z + ">" + y);
+  console.log(x + ">" + z + ">" + y);
 } else if (z > y && y > x) {
   alert(z + ">" + y + ">" + x);
+  console.log(z + ">" + y + ">" + x);
 }
 
 //Condition that some of the numbers are equal.
 else if (x == y && x < z) {
   alert(x + "=" + y + "<" + z);
+  console.log(x + "=" + y + "<" + z);
 } else if (x == y && z < x) {
   alert(z + "<" + x + "=" + y);
+  console.log(z + "<" + x + "=" + y);
 } else if (x == z && z < y) {
   alert(x + "=" + z + "<" + y);
+  console.log(x + "=" + z + "<" + y);
 } else if (x == z && z > y) {
   alert(y + "<" + x + "=" + z);
+  console.log(y + "<" + x + "=" + z);
 } else if (y == z && z < x) {
   alert(y + "=" + z + "<" + x);
+  console.log(y + "=" + z + "<" + x);
 } else if (x < y && y == z) {
   alert(x + "<" + y + "=" + z);
 } else if (x == y && y == z) {
   alert(x + "=" + y + "=" + z);
+  console.log(x + "=" + y + "=" + z);
 } else {
   alert("Please enter numbers");
 }
