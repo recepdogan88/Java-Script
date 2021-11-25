@@ -21,18 +21,18 @@ let y = parseInt(value2);
 let z = parseInt(value3);
 
 //Sort from smallest to largest
-if (x < y && y < z) {
-  alert(x + "<" + y + "<" + z);
-} else if (z < x && x < y) {
-  alert(z + "<" + x + "<" + y);
-} else if (y < z && z < x) {
-  alert(y + "<" + z + "<" + x);
-} else if (y < x && x < z) {
-  alert(y + "<" + x + "<" + z);
-} else if (x < z && z < y) {
-  alert(x + "<" + z + "<" + y);
-} else if (z < y && y < x) {
-  alert(z + "<" + y + "<" + x);
+if (x > y && y > z) {
+  alert(x + ">" + y + ">" + z);
+} else if (z > x && x > y) {
+  alert(z + ">" + x + ">" + y);
+} else if (y > z && z > x) {
+  alert(y + ">" + z + ">" + x);
+} else if (y > x && x > z) {
+  alert(y + ">" + x + ">" + z);
+} else if (x > z && z > y) {
+  alert(x + ">" + z + ">" + y);
+} else if (z > y && y > x) {
+  alert(z + ">" + y + ">" + x);
 }
 
 //Condition that some of the numbers are equal.
