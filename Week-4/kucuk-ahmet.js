@@ -9,7 +9,7 @@
 */
 
 //variables has been assigned
-number = Math.round(Math.random() * 10 + 1);
+number = Math.floor(Math.random() * 10) + 1;
 guess = parseInt(
   prompt("Enter Prediction: ", "Enter 1 number between 1 and 10")
 );
