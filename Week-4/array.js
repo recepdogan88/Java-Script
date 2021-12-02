@@ -41,6 +41,8 @@ for (let index = 0; index < len; index++) {
 
 console.log("The largest number is: ", max);
 
+//finding the largest number
+
 console.log("----Smallest number------");
 
 let min = array[0];
