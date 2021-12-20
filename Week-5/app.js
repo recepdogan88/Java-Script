@@ -10,11 +10,12 @@
 let animals=["domuz","inek","tavuk","inek","koyun","domuz","tavuk","inek"]
 let legs=0
 for(let i=0;i<animals.length;i++){
-   if(animals[i]=="tavuk"){
+   if(animals[i]=="tavuk"){  //If the animal is a chicken, increase the counter by 2
       legs+=2
    }
-   else if(animals[i]!=="domuz"){
+   else if(animals[i]!=="domuz"){//Else if the animal is not pig,increase the counter by 4
       legs+=4
    }
 }
 console.log(legs)
+
