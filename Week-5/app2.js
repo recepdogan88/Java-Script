@@ -1,9 +1,9 @@
 /*
-1. Parca isimleri büyük harflere cevrilecektir. +++
-2. Parca isimlerinden sayilar cikartilacaktir.
-3. Parca isimleri tersine cevrilecektir.
-4. Her parcanin basina KEREMAG_ eklenecektir. +++
-5. Her parcanin sonuna ise parcanin sisteme girildigi tarih eklenecektir. (Date nesnesini kullanarak tarih ve saat konulmasi yeterlidir)
+1. KEREMAG- will be added to the beginning of each element in the array with the addName function.
+2. All letters will be written in uppercase with the upperCase function.
+3. With the reverse function, the elements will be reversed.
+4. The date will be added with the date2 function. 
+5. The numbers in the array will be removed with the removedNumber function.
 */
 
 
@@ -25,11 +25,11 @@ function upperCase(){
 console.log(upperCase())
 
 function reverse(){
-    const reversed=yedek.reverse
-    return reversed
+   let reversed=yedek.reverse
+    return  reversed
 }
 
-console.log(reverse())
+console.log(yedek.reverse())
 
 let dateday= new Date()
 function date2(){
@@ -40,3 +40,10 @@ function date2(){
     return date1
 }
 console.log(date2())
+
+function removedNumber(){
+   let removedNumberyedek=yedek.map(element =>element.replace(/\d+/g, '' ))
+   return removedNumberyedek
+}
+console.log(removedNumber())
+
