@@ -1,52 +1,54 @@
 let entNumber= document.querySelector("#input1")
 let btn= document.querySelector("#btn1")
 let years=[]
+let parag=document.querySelector("#parag")
+let hayvan=["Monkey", "Cock", "Dog", "Boar", "Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Sheep"]
+let element =["Metal", "Water", "Wood", "Fire", "Earth"]
 
 let btnClick=btn.addEventListener("click",btnclick);
 function btnclick(){
-    let getValue=Number(entNumber.value)
-    if(isNaN(getValue)){
-       alert("lutfen rakama giriniz")
-    }else if (getValue.length<5){
-      alert("")
-    }
+    let getValue=entNumber.value
+    if ('^\\d{4}$'){
+      alert("Lutfen 4 haneli dogum yilinizi giriniz")
+    }else{
     years.push(getValue)
-    console.log(years) 
     calculating()
+    }
    
     entNumber.value=""
-    
 }
 
 let calculating=function calculate(year){
   years.map((year,index)=>{
-       if(year%12==0){
-           return console.log("Metal"+" "+"Monkey")
-       }if(year%12==1){
-           return console.log("Metal"+" "+"Cock")
-       }if(year%12==2){
-           return console.log("Water"+" "+"Dog")
-       }if(year%12==3){
-        return console.log("Water"+" "+"Boar")
+    parag.innerHTML=""
+      if(year%12==0){
+           return parag.innerHTML=` ${year} Metal Monkey`
+      }if(year%12==1){
+           return parag.innerHTML=` ${year} Metal Chock`
+      }if(year%12==2){
+           return parag.innerHTML=` ${year} Water Dog`
+      }if(year%12==3){
+        return parag.innerHTML=` ${year} Water Boar`
       }if(year%12==4){
-        return console.log("Wood"+" "+"RAT")
+        return parag.innerHTML=` ${year} Wood Rat`
       }if(year%12==5){
-        return console.log("Wood"+" "+"OX")
+        return parag.innerHTML=` ${year} Wood Ox`
       }if(year%12==6){
-        return console.log("Fire"+" "+"Tigger")
+        return parag.innerHTML=` ${year} Fire Tigger`
       }if(year%12==7){
-        return console.log("Fire"+" "+"Rabbit")
+        return parag.innerHTML=` ${year} Fire Rabbit `
       }if(year%12==8){
-        return console.log("Earth"+" "+"Dragon")
+        return parag.innerHTML=` ${year} Earth Dragon`
       }if(year%12==9){
-        return console.log("Earth"+" "+"Snake")
+        return parag.innerHTML=` ${year} Earth Snake`
       }if(year%12==10){
-        return console.log("Earth"+" "+"Snake")
-      }if(year%12==10){
-        return console.log("Metal"+" "+"Horse")
+        return parag.innerHTML=` ${year} Metal Horse`
       }if(year%12==11){
-        return console.log("Metal"+" "+"Sheep")
+        return parag.innerHTML=` ${year} Metal Sheep`
       }
     })
 }
 
+//if(isNaN(getValue)|| getValue==""){
+ // alert("lutfen rakama giriniz")
+//}
