@@ -1,3 +1,13 @@
+/*
+1-Dizinin ilk elemani olan maas degiskene atandi.
+2-Harcamalari hesaplamak icin fonksiyon olusturuldu.
+3-Fonksiyonun icinde shift metodu ile dizinin ilk elemani olan maas cikarildi.
+4-Filter metodu ile stringler cikarildi sadece sayilar bir dizuye atandi.
+5-Reduce metodu ile sayilar toplandi.
+6-Fonksiyon degiskene atandi.
+7-Harcamalarin yuzde 20 lik sirket tarafindan karsilanacak kismi fonksiyon icinde hesaplandi.
+8-Kalan parayi hesaplamak icin fonksiyon olusturuldu ve diger fonksiyonlar parametre olarak atandi.
+*/
 const incomeStatement = [15000, 2000, 1000, 300, 200, "important electronic",
                         600, 79, "abo", 342, "printer", 450, 32, 45, "fitness",
                         64, 10, 23, 12, 2, 56,7]
@@ -14,22 +24,22 @@ function expendetures(){
     
     return  expendeture
 }
-let gider=expendetures()
-console.log(gider)
+let expendeture=expendetures()
+console.log(expendeture)
 
-function supportBudget(gider){
-     let amount=gider*0.2
+function supportBudget(expendeture){
+     let amount=expendeture*0.2
      return amount
 }
-let butce=supportBudget(gider)
-console.log(butce)
+let supportedBudget=supportBudget(expendeture)
+console.log("sirketin destegi="+supportedBudget)
 
 
 function leftMoney(a,b,c){
     let leftincome=a-(b-c)
     return leftincome
 }
-console.log(leftMoney(salary,gider,butce))
+console.log("kalan para="+leftMoney(salary,expendeture,supportedBudget))
 
 
 
