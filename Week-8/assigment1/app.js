@@ -101,7 +101,8 @@ const families = [
 
 
 /*
---------1.Assigment: Maasi 5000'in üzerinde olan ailelerin listesi
+--------1.Assigment: Maasi 5000'in üzerinde olan ailelerin listesi. 
+                     Listede aile babasinin isimleri ve soy isimleri isim sirasina göre listelenmeli.
 
 ANALIZ
 1-HugeSalary fonksiyonu icerisinde filter ile obje icerisnde gezilip maasi 5000 uzerinde olan aileler filtrelendi.
@@ -109,12 +110,7 @@ ANALIZ
 
 
 */
-function hugeSalary(array){
-   salaryfilter=array.filter(item =>item.salary>5000)
-                      .map(isim =>isim.firstname+" "+isim.lastname)
-   return "GELIRI 5000 DEN FAZLA OLAN AILE RESILERININ ISIM VE SOYISIMLERI: "+salaryfilter
-   
-}
+
 console.log(hugeSalary(families))
 
 /*
@@ -137,11 +133,7 @@ let children=[]
    });
  });
 
- function boyNumber(array){
-   let bynum=array.filter(child => child.gender=="boy")
-                  .map(child => child.name)
-   return "ERKEK COCUKLARIN ISIMLERI:"+" "+bynum+"------ERKEK COCUKLARIN SAYISI: "+bynum.length
-}
+ 
  console.log(boyNumber(children))
 
  /*
@@ -153,11 +145,7 @@ let children=[]
  kiz cocuklari suzuldu.
  3-Map ile suzulen objelerden cocuk isimleri alindi ve dizi boyutu yazildi.
  */
- function girlNumber(array){
-   let bynum=array.filter(child => child.gender=="girl")
-                  .map(child => child.name)
-   return "KIZ COCUKLARIN ISIMLERI:"+" "+bynum+"------KIZ COCUKLARIN SAYISI: "+bynum.length
-}
+ 
  
  console.log(girlNumber(children))
 
@@ -171,15 +159,7 @@ ANALIZ
 4-Daha sonra map ile gezilerek cocuklarin isimleri ve yaslari yazdirildi.
  */
 
-function childrenYears(array){
-    chilyears=array.filter(item=> item.age<8)
-                   .sort((a, b) => (a.age < b.age) ? 1 : -1)
-                   .map(child=> child.name+" yasi :"+child.age)
-                   
-                  // .map(item =>item.childrens[0].name+" "+item.childrens[0].age)
-                   
-   return chilyears
-}
+
 let undereightChildrens=childrenYears(children)
 console.log("Yaslarina gore 8 yasindan kucuklerin buyukten kucuge siralanmasi"+undereightChildrens)
 
@@ -194,15 +174,6 @@ ANALIZ
 5-Fonksiyonun icerisinde console.log a yadir denildi.
  */
 
-function childrenOverEightYear(){
-    families.map(family => {
-        family.childrens.map(child => {
-            if (child.age > 8) {
-                console.log('cocuk  adi:'+"----"+ child.name+" ----"+ 'anne adi :', family.partner)
-    
-            }
-        });
-      });
-}
+
 childrenOverEightYear()
 
