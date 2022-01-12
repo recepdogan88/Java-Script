@@ -9,3 +9,32 @@ function fishpricebetween(){
                        .map(fish=> fish.fishType)
         return price
 }
+euCountries = [
+    "Austria",
+    "Belgium",
+    "Bulgaria",
+    "Croatia",
+    "Cyprus",
+    "Czech Republic",
+    "Denmark",
+    "Estonia",
+    "Finland",
+    "France",
+    "Germany",
+    "Greece",
+    "Hungary",
+    "Ireland",
+    "Italy",
+    "Latvia",
+    "Lithuania",
+    "Luxembourg",
+    "Malta",
+    "Netherlands",
+    "Poland",
+    "Portugal",
+    "Romania",
+    "Slovakia",
+    "Slovenia",
+    "Spain",
+    "Sweden"
+]
