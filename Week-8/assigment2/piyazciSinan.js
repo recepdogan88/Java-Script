@@ -1,16 +1,59 @@
 /*
-1) Stok miktari 500 kg uzerinde olan baliklarin isimleri nelerdir?
-2) Fiyat araligi 9Fr. ile 12 Fr. arasindaki baliklar hangileridir?
-3) Sadece Bern'de ve kis sezonu satilan baliklar hangileridir?
-4) Son kullanma tarihlerine gore baliklari siralayiniz. (Son kullanma tarihi yaklasan baliklar once gosterilmelidir)
-5) Avrupa Birligi'nden (AB) gelen ve fiyati 10Fr dan dusuk olan baliklari alfabetik siraya gore siralayiniz.
-6) Toplam balik stoku ne kadardir?
-7) En pahali olan balik hangisidir?
-8) En uzun sureli durabilen baliklar hangi ulkeden gelmektedir?
-9) Kis ve sonbahar sezonu icin swiss romande region'da satilan baliklarin ortalama fiyati nedir?
-10) Ticino Kantonu icin stokta toplam ne kadar balik mevcuttur?
-11) Yazlik sezonda cikan ve AB disindan gelen ve de ZH'de satilan baliklarin ortalama gramajini bulunuz?
+ANALIZ
+1-
+a-Stockover fonksiyonu olusturuldu.
+b-Filter methodu ile 500 uzeri baliklar filtrelendi.
+c-Filtrelenen objeler map ile gezilerek isimler alindi ve consolda yazdirildi.
+2-
+a-fishpricebetween fonksiyonu olusturuldu.
+b-Fiyati 8 den buyuk ve 13 den kucuk olacak sekilde iki kosul ile filter methodu ile filtrelendi.
+c-Daha sonra suzulen objeler map ile gezilerek isimler console a yazdirildi.
+3-
+a-Once winter degiskenine sadece kis sezonunda satilan baliklar filtrelendi.
+b-Winter degiskeni icinde icinde ic ice map kullanilarak location dizisi icerisnde 2BE" kosulu yazildi.
+c-Bu kosul saglandiginda bir ust donguden balik isimleri alindi ve console a yazdirildi.
+5-
+a-euAndlowPrive fonksiyonu olusturldu.
+b-Icinde avrupa ulkelerinin oldugu eucountries dizisi olusturldu.
+c-Filter methodunun icinde includes methodu ile ab ulkerinin oldugu dizi ile karsilarildi.
+d-Ikinci kosul olarak filter methoduna 10 fr dan kucuk olanlar methodu yazildi.
+e-Filtrelenen objeler map ile gezilerek isimler alindi.
+f-Daha sonra sort methodu ile alfabetik siraya dizildi ve ekrana yazdirildi.
+6-
+a-stockAmount() fonksiyonu icinde reduce methodu ile butun balik stoklari toplandi.
+7-
+a-reduce((max, min) methodu ile fiyatlar icindeki en yuksek rakam bulundu.
+b-Bulunan rakama sahip olan balik ismi yazdirildi.
+8-
+a-longestDay() fonksiyonu icinde longestDays degiskeni 0 esitlendi.
+b-En buyuk rakami bulmak icin ic ice map ile gezilerek her durationInDays longestday degiskeni ile
+kiyaslandi.Buyuk olan longestday degiskenine atanarak devam edildi.
+c-En son elemana kadar bu kiyaslama yapildi eger degiskenden kucuk ise bir sonraki elemana gecildi.
+d-Bu degisken son dongude bize bu objenin en buyuk durationdays iteminin rakamini verdi.
+e-Daha sonra bu rakama sahip olan balik ismi yazdirildi.
+9-
+a-winterandautoumn degiskeni icinde fisharm dizisinin icindeki ojjelerin icindeki season u kis ve sonbahar olanlar
+filter methodu ile suzuldu.
+b-Daha sonra filtrelenen dizi iciresinde map ile donulerek icinde if kosulu ile romende bolgelerindeki sehirler
+yazildi.
+c-Daha onceden olusturulan allprices dizisi icine push edildi.
+d-allprices dizisi icerisnde reduce methodu ile toplama yapildi.
+10-
+a-ticinoStockAmount fonksiyonu icerisinde ic ice map ile ticino kantonu kosulunu saglayan balik objeleri
+onceden olusturulan ticino dizisi icine push edildi.
+b-ticinoStockAmount fonksiyonu ticinostock degiskenine atandi.
+c-ticinostock degiskenin iceriseki stok miktari reduce methodu ile toplanarak ticinoStockTotal degiskenine atandi.
+d-ticinoStockTotal degiskeni ekrana yazdirildi.
+11-
+a-zurichSale fonksiyonu icinde map methodu icinde zurich kosulunu saglayan objeler onceden olusturlan bos zurich
+dizisi icerisine atildi.
+b-summerAndexceptAb fonksiyonu icerisine zurichSale fonksiyonu parametre olarak atandi.
+c-Summer ve AB ulkeleri dizisinde olmam kosulu(includes ile) saglayan objeler filtrelenerek sumgram degiskenine atandi.
+d-Sumgram dizisinde reduce methodu ile gramajlar toplandi ve dizinin uzunluguna bolunerek ortalama bulundu.
+
 */
+
+
 
 
 //1) Stok miktari 500 kg uzerinde olan baliklarin isimleri nelerdir?
@@ -36,9 +79,6 @@ let winter=fishFarm.filter(fish=>fish.season=="Winter")
     })
 })
 
-
-
-
 //4) Son kullanma tarihlerine gore baliklari siralayiniz. (Son kullanma tarihi yaklasan baliklar once gosterilmelidir)
 
 let sortedObjectbydate=fishFarm.sort(function (a, b) {
@@ -53,25 +93,10 @@ console.log(sortbyDate())
 
 //5-Avrupa Birligi'nden (AB) gelen ve fiyati 10Fr dan dusuk olan baliklari alfabetik siraya gore siralayiniz.
 
-
-function euAndlowPrive(){
-    let eu=fishFarm.filter(item => euCountries.includes(item.originCountry)&&item.price<10)
-    .map(item=>item.fishType)
-    .sort()
-    return eu
-}
-
 console.log("5-Avrupa Birligi'nden (AB) gelen ve fiyati 10Fr dan dusuk olan baliklar")
 console.log(euAndlowPrive())
 
-
-
 //6) Toplam balik stoku ne kadardir?
-
-function stockAmount(){
- const sonuc = fishFarm.reduce((accumulator, fishstock) =>  accumulator + fishstock.stockVolumeInKg ,0) ;
- return sonuc
-}
 
 console.log("6) Toplam balik stoku ne kadardir?")
 console.log("TOPLAM STOK MIKTARI = "+stockAmount()+" KG")
@@ -83,35 +108,19 @@ console.log("7) En pahali olan balik hangisidir?")
 console.log("EN PAHALI BALIK :"+mostexpensive.fishType) 
 
 //8) En uzun sureli durabilen baliklar hangi ulkeden gelmektedir?
-console.log("8) En uzun sureli durabilen baliklar hangi ulkeden gelmektedir?")
-function longestDay() {
-    let longestDays = 0;
-    
-     fishFarm.map(item => {
-     if(item.durationInDays > longestDays) {
-       longestDays = item.durationInDays;
-        }
-    });
-  
-    return longestDays
-  }
- let longestDurationday=longestDay()
- 
- function country(){
-     fishFarm.map(fish =>{
-         if(fish.durationInDays==longestDurationday){
-             console.log(fish.originCountry)
-         }
-     })
- }
- country()
 
- //9) Kis ve sonbahar sezonu icin swiss romande region'da satilan baliklarin ortalama fiyati nedir?
- allprices=[]
- let winterandautoumn=fishFarm.filter(fish=>fish.season=="Winter"||fish.season=="Autumn")
- let romende=winterandautoumn.map(fishes=>{
+console.log("8) En uzun sureli durabilen baliklar hangi ulkeden gelmektedir?")
+let longestDurationday=longestDay()
+ 
+country()
+
+//9) Kis ve sonbahar sezonu icin swiss romande region'da satilan baliklarin ortalama fiyati nedir?
+
+allprices=[]
+let winterandautoumn=fishFarm.filter(fish=>fish.season=="Winter"||fish.season=="Autumn")
+let romende=winterandautoumn.map(fishes=>{
     fishes.saleLocations.map(fish=>{
-        if(fish=="BS"||fish=="GE"||fish=="VD"){
+        if(fish=="NE"||fish=="GE"||fish=="VD"||fish=="BE"){
            
           return  allprices.push(fishes.price)
         }
@@ -124,17 +133,7 @@ console.log("9) Kis ve sonbahar sezonu icin swiss romande region'da satilan bali
 console.log("ROMENDEDE SATILAN BALIKLARIN ORTALAMA FIYATI :"+result)
 
 //10) Ticino Kantonu icin stokta toplam ne kadar balik mevcuttur?
-function ticinoStockAmount(){
-    let ticino=[]
-    fishFarm.map(fish=>{
-        fish.saleLocations.map(location =>{
-            if(location=="TI"){
-               ticino.push(fish.stockVolumeInKg)
-            }
-        })
-    })
-    return ticino
-}
+
 let ticinostock=ticinoStockAmount()
 let ticinoStockTotal=ticinostock.reduce((sum,item)=>sum+item)
 console.log("10) Ticino Kantonu icin stokta toplam ne kadar balik mevcuttur?")
@@ -142,22 +141,6 @@ console.log("TICINO STOK MIKTARI : "+ticinoStockTotal)
 
 //11)Yazlik sezonda cikan ve AB disindan gelen ve de ZH'de satilan baliklarin ortalama gramajini bulunuz?
 
-function zurichSale(){
-   let zurich=[]
-   fishFarm.map(item=>{
-        item.saleLocations.map(city=>{
-            if(city=="ZH"){
-                zurich.push(item)
-            }
-        })
-    })
-    return zurich
-}
-saleZurich=zurichSale()
-
-let sumgramAverage=saleZurich.filter(item=>item.season="summer"&&!euCountries.includes(item.originCountry))
-                                .reduce((accumulator,item)=> accumulator+item.itemWeightInGrams,0)
-
-console.log(sumgramAverage)
-
+console.log("11)Yazlik sezonda cikan ve AB disindan gelen ve de ZH'de satilan baliklarin ortalama gramaji")
+console.log(summerAndexceptAb(zurichSale()))
 
