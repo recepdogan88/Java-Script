@@ -1,9 +1,28 @@
+/*
+1-Students adinda bos bir dizi olusturuldu.
+2-Form elemanlarin submit event uygulandi.
+3-addStudents fonksoyonunda name ve surname inputuna yalnizca harf girilmesi icin daha once olusturlan 
+letterOnlyCheck fonks. cagrildi.
+4-Yas inputu icin onkeypress eventi uygulandi ve inputuna uzerine gelindiginde harf veya baska birsey girilmesi onlendi.
+5-Verilerin kontrolunden sonra veriler students objesine konuldu ve students dizisine push edildi.
+6-Veriler diziye push edildikten sonra local storage a kaydedildi.
+7-Kaydedilen verilerden sonra daha once olusturulan listRender fonksiyonu cagrilirak render edildi.
+8-Silme isleminin yapilmasi icin studentdelete fonksiyonu olusturuldu.
+9-Onclick ile cagirilan fonksiyonda parametre olarak objenin id si alindi.
+10-Bu id ye sahip olan obje local storage dan filter yontemi ile alindi.(FILTER ILE BU OBJE DISINDAKI OBJELER ALINMIS OLDU.)
+11-Silinmis objenin cikarilmis haliyle local storage daki dizi render edildi.
+*/
+
+
+
 let students=[]
 let studentList=document.getElementById("table-body")
-let inputValue=document.querySelectorAll(".form-control")
+let firstname=document.querySelector(".input-name")
+let lastname=document.querySelector(".input-lastname")
+let age=document.querySelectorAll(".input-age")
 
 const formPerson = document.getElementById("form-person");
-document.querySelector(".total-students").innerHTML=0
+document.querySelector(".total-students").innerHTML=`${students.length}`
 formPerson.addEventListener("submit",addStudents)
 
 function listrender(array){
@@ -21,25 +40,20 @@ function listrender(array){
 
 function addStudents(event){
 event.preventDefault();
-let newStudent={}
+lettersOnlyCheck(firstname)
+lettersOnlyCheck(lastname)
 
-if(event.target["name"].value==""||!/^[a-zA-Z]*$/g.test(event.target["name"].value)){
-    alert("...")
+let newStudent={
+  id: uuidv4(),
+  name: event.target["name"].value,
+  surname:event.target["surname"].value,
+  age:event.target["age"].value
+  
 }
-else{
-        newStudent={
-        id: uuidv4(),
-        name: event.target["name"].value,
-        surname:event.target["surname"].value,
-        age:event.target["age"].value
-        
-    }
-}
-
-students.push(newStudent);
+students.push(newStudent)
 setToLocalStorage("students", students);
 listrender(getFromLocalStorage("students"));
-    
+ 
 }
 
 function studentdelete(pId){
@@ -59,4 +73,45 @@ const setToLocalStorage = (pKey, pValue) => {
   };
 
 listrender(getFromLocalStorage("students"))
-let x=getFromLocalStorage("students")
+
+
+
+const showConfirmAlert = (pId) => {
+  Swal.fire({
+    title: "Silmek istediginize emin misiniz?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      studentdelete(pId);
+      Swal.fire("Person basariyla silindi!", "", "success");
+    }
+  });
+};
+
+
+
+//inputlarin validationi yapildi.
+
+function lettersOnlyCheck(name)
+{
+   var regEx = /^[A-Za-z]+$/;
+   if(name.value.match(regEx))
+     {
+      return true;
+     }
+   else
+     {
+     alert("Please enter letters only.");
+     return false;
+     }
+}    
+
+function validateNumber(e) {
+  const pattern = /^[0-9]$/;
+
+  return pattern.test(e.key )
+}
