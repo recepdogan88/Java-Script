@@ -1,0 +1,24 @@
+let person=[{
+    id:1,
+    name:"Alper",
+    surname:"Sanli",
+    point:0
+},
+{
+    id:2,
+    name:"Turgut",
+    surname:"Erdem",
+    point:0
+},
+{
+    id:3,
+    name:"Ramazan",
+    surname:"Sanli",
+    point:0
+},
+{
+    id:4,
+    name:"Rana",
+    surname:"Dogan",
+    point:0
+}]
