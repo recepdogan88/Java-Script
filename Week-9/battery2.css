@@ -1,0 +1,41 @@
+main{
+   display: flex; 
+   flex-direction: row;
+   width: 150px;
+   height: 310px;
+   margin-left: 300px;
+   margin-top: 90px;
+}
+.battery{
+    display: flex; 
+    flex-direction: column; 
+    width: 150px;
+    height: 310px;
+    border: solid 5px black;
+}
+.uppermost{
+    width: 40px;
+    height: 10px;
+    background-color: black;
+    margin-top: -10px;
+    margin-left: 55px;
+}
+.top,.middle{
+    width: 150px;
+    height: 100px;
+    border-bottom:solid 5px black ;
+}
+.bottom{
+    width: 150px;
+    height: 115px;
+}
+#btn1,#btn2{
+    margin: 30px;
+    width: 80px;
+    height: 40px;
+    margin-left: 70px;
+    margin-top: 70px;
+    background-color: rgb(73, 73, 177);
+    color: white;
+    font-size: large;
+}
