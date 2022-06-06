@@ -139,12 +139,21 @@ function gameOverAlert(){
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'GAME OVER!',
+        text: 'GAME OVER!!!',
         footer: resultPuan()
       })
 }
 
 function starttime(){
+    let random=Math.floor(Math.random() * person.length)
+    console.log(random)
+    let competitor=person[random]
+    console.log(competitor)
+    competitor[0].point=point+puan
+    personrender(person)
+}
+
+function time(){
     var timeleft = 10;
     var downloadTimer = setInterval(function(){
       if(timeleft <= 0){
@@ -162,8 +171,6 @@ function starttime(){
       timeleft -= 1;
     }, 1000);
 }
-
-
 
 
 
